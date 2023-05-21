@@ -3,7 +3,8 @@ import SingleData from '../SingleData/SingleData';
 
 const Card = () => {
     const [data, setData] = useState([]);
-
+    const [showAll, setShowAll] = useState(false);
+    
 
     useEffect(()=>{
         const loadData =async () =>{
@@ -19,7 +20,7 @@ const Card = () => {
         <>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  lg:px-12 gap-4 my-5'>
                 {
-                    data.map((singleData) =>{
+                    data.slice(showAll ? 12 : 6).map((singleData) =>{
                         
                         return <SingleData key = {singleData.id} singleData = {singleData} />;
                     })
